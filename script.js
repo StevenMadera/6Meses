@@ -310,8 +310,13 @@ function buildPlayer(container, songIndex) {
     updateMiniPlayer(song, !audio.paused);
   }
 
+  function resetToFragmentStart() {
+    audio.currentTime = song.start;
+    updateUI();
+  }
+
   audio.addEventListener("loadedmetadata", () => {
-    if (audio.currentTime < song.start) audio.currentTime = song.start;
+    resetToFragmentStart();
   });
 
   audio.addEventListener("timeupdate", () => {
@@ -321,19 +326,25 @@ function buildPlayer(container, songIndex) {
         playBtn.textContent = "▶";
         updateUI();
       });
+      return;
     }
     updateUI();
   });
 
   audio.addEventListener("play", () => {
     playBtn.textContent = "❚❚";
+    updateUI();
   });
   audio.addEventListener("pause", () => {
     playBtn.textContent = "▶";
     updateMiniPlayer(song, false);
+    updateUI();
   });
+  audio.addEventListener("seeking", updateUI);
+  audio.addEventListener("seeked", updateUI);
   audio.addEventListener("ended", () => {
     playBtn.textContent = "▶";
+    resetToFragmentStart();
   });
   audio.addEventListener("error", () => {
     container.querySelector(".player-note").textContent =
@@ -342,7 +353,7 @@ function buildPlayer(container, songIndex) {
 
   function startPlayback() {
     if (audio.currentTime < song.start || audio.currentTime >= song.end) {
-      audio.currentTime = song.start;
+      resetToFragmentStart();
     }
     audio.volume = volumeInput.value;
     AudioSystem.play(songIndex, audio);
