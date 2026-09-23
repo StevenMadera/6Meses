@@ -443,6 +443,14 @@ function buildPlayer(container, songIndex) {
     syncPlaybackUI();
   }
 
+  function stopPlayback() {
+    stopVisualTicker();
+    audio.pause();
+    audio.currentTime = song.start;
+    visualStartedAt = null;
+    syncPlaybackUI();
+  }
+
   playBtn.addEventListener("click", () => {
     if (audio.paused) {
       startPlayback();
@@ -454,6 +462,7 @@ function buildPlayer(container, songIndex) {
   // Expuesto para el sistema de auto-reproducción al entrar a esta página
   container._audio = audio;
   container._start = startPlayback;
+  container._stop = stopPlayback;
   container._sync = syncPlaybackUI;
   container._songIndex = songIndex;
 
@@ -533,10 +542,10 @@ function initSongAutoStop() {
             AudioSystem.play(holder._songIndex, holder._audio);
             holder._sync();
           }
-        } else if (!entry.isIntersecting) {
-          // Al salir de la página, si esta canción seguía sonando, se detiene.
+        } else {
+          // Al cambiar de página, si esta canción seguía sonando, se detiene.
           if (!holder._audio.paused) {
-            AudioSystem.fadeOutAndStop(holder._audio);
+            holder._stop();
           }
         }
       });

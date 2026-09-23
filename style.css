@@ -387,10 +387,24 @@ img{ max-width:100%; display:block; }
 .player-controls-spacer{ width:56px; order:3; }
 
 .player-note{
-  font-family:var(--font-sans); font-size:.62rem; color:var(--ink-soft);
-  margin-top:.7rem; text-align:center; opacity:.8;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  align-self:center;
+  max-width:100%;
+  padding:.48rem .8rem;
+  border-radius:999px;
+  border:1px solid rgba(90,50,120,.18);
+  background:rgba(255,255,255,.58);
+  font-family:var(--font-sans); font-size:.74rem; color:var(--purple-dark);
+  margin-top:.85rem; text-align:center; opacity:1;
 }
-.song--dark .player-note, .song--cinematic .player-note, .song--deep .player-note{ color:var(--lavender); opacity:.7; }
+.song--dark .player-note, .song--cinematic .player-note, .song--deep .player-note{
+  color:#fff;
+  border-color:rgba(255,255,255,.18);
+  background:rgba(255,255,255,.12);
+  opacity:1;
+}
 
 /* Letra estilo "now playing" de Spotify: línea actual grande y centrada,
    las de alrededor visibles pero tenues. */
