@@ -370,6 +370,7 @@ function buildPlayer(container, songIndex) {
   // Expuesto para el sistema de auto-reproducción al entrar a esta página
   container._audio = audio;
   container._start = startPlayback;
+  container._sync = updateUI;
   container._songIndex = songIndex;
 
   bar.addEventListener("click", (e) => {
@@ -445,6 +446,9 @@ function initSongAutoplay() {
           // Cada vez que se entra a la página de esta canción, empieza a sonar sola.
           if (holder._audio.paused) {
             holder._start();
+          } else {
+            AudioSystem.play(holder._songIndex, holder._audio);
+            holder._sync();
           }
         } else if (!entry.isIntersecting) {
           // Al salir de la página, si esta canción seguía sonando, se detiene.
@@ -458,6 +462,24 @@ function initSongAutoplay() {
   );
 
   songSections.forEach((section) => observer.observe(section));
+}
+
+function syncActivePlayerUI() {
+  const { audio } = AudioSystem.getCurrent();
+  if (!audio) return;
+
+  document.querySelectorAll("[data-player]").forEach((holder) => {
+    if (holder._audio === audio && holder._sync) {
+      holder._sync();
+    }
+  });
+}
+
+function initAudioResumeSync() {
+  window.addEventListener("pageshow", syncActivePlayerUI);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) syncActivePlayerUI();
+  });
 }
 
 /* ============================================================
@@ -719,6 +741,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCoverOpen();
   initFinalFlow();
   initSongAutoplay();
+  initAudioResumeSync();
   initPageNav();
   initManualScrollLock();
 });
