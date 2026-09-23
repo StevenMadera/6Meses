@@ -19,9 +19,14 @@ const songs = [
       // Cada "start"/"end" es el tiempo (en segundos, dentro del fragmento)
       // en el que esa línea debe estar resaltada.
       // Reemplaza el texto por tus propias líneas autorizadas.
-      { start: 0, end: 6, text: "[línea autorizada 1]" },
-      { start: 6, end: 12, text: "[línea autorizada 2]" },
-      { start: 12, end: 18, text: "[línea autorizada 3]" },
+      { start: 0, end: 2, text: "..." },
+      { start: 2, end: 6, text: "No puedo estar sin ti, Apareciste justo cuando quería estar solo" },
+      { start: 6, end: 13, text: "Parece que el destino te trajo para mi, Mientras pasa el tiempo de ti más me enamoro" },
+      { start: 13, end: 15, text: "Tú dime que hago sin ti" },
+      { start: 15, end: 21, text: "Apareciste justo cuando quería estar solo, Parece que el destino te trajo para mi" },
+      { start: 21, end: 27, text: "Mientras pasa el tiempo de ti más me enamoro, Tú dime que hago sin ti" },
+      { start: 27, end: 30, text: "..." },
+    
     ],
   },
   {
@@ -30,10 +35,16 @@ const songs = [
     file: "audio/02-hecha-pa-mi.mp3",
     cover: "images/paula-1.jpg",
     start: 0,
-    end: 30,
+    end: 38,
     lyrics: [
-      { start: 0, end: 6, text: "[línea autorizada 1]" },
-      { start: 6, end: 12, text: "[línea autorizada 2]" },
+      { start: 0, end: 6, text: "Puede que yo no sea perfecto, pero, por ti, lo intento" },
+      { start: 6, end: 10, text: "De esos ojitos bellos, quiero ser el dueño" },
+      { start: 10, end: 13, text: "Hasta que mi tiempo se acabe" },
+      { start: 13, end: 18, text: "Mija, voy a cuidarte, pa' que nada te pase" },
+      { start: 18, end: 23, text: "Porque has de saber que yo estoy hecho pa' ti" },
+      { start: 23, end: 28, text: "Has de saber que tú estás hecha pa' mí, pa' mí, pa' mí" },
+      { start: 28, end: 33, text: "Así, a la medida, ¿dónde andabas perdida?" },
+      { start: 33, end: 38, text: "Al amor y a ti, los conocí el mismo día" },
     ],
   },
   {
@@ -42,10 +53,12 @@ const songs = [
     file: "audio/03-ebrio-de-amor.mp3",
     cover: "images/cover-ebrio.jpg",
     start: 0,
-    end: 25,
+    end: 19,
     lyrics: [
-      { start: 0, end: 6, text: "[línea autorizada 1]" },
-      { start: 6, end: 12, text: "[línea autorizada 2]" },
+      { start: 0, end: 5, text: "Tú eres mi vida, tú eres mi amor" },
+      { start: 5, end: 9, text: "Tú eres mi todo" },
+      { start: 9, end: 12, text: "Qué triste me siento" },
+      { start: 12, end: 19, text: "Por no decidir, te quiero a mi modo" },
     ],
   },
   {
@@ -54,10 +67,14 @@ const songs = [
     file: "audio/04-te-quiero-amor.mp3",
     cover: "images/ojos-paula.jpg",
     start: 0,
-    end: 30,
+    end: 33,
     lyrics: [
-      { start: 0, end: 6, text: "[línea autorizada 1]" },
-      { start: 6, end: 12, text: "[línea autorizada 2]" },
+      { start: 0, end: 5, text: "Noche a noche esperando por tu amor" },
+      { start: 5, end: 11, text: "Como aguarda este loco corazón" },
+      { start: 11, end: 16, text: "¿En dónde estás? Te quiero amar" },
+      { start: 16, end: 21, text: "Eres dueña de mis sueños, de mi yo" },
+      { start: 21, end: 27, text: "En mis venas solo fluye este amor" },
+      { start: 27, end: 33, text: "Te quiero amar, te quiero amar" },
     ],
   },
   {
@@ -66,10 +83,20 @@ const songs = [
     file: "audio/05-wonderwall.mp3",
     cover: "images/nosotros-2.jpg",
     start: 0,
-    end: 35,
+    end: 44,
     lyrics: [
-      { start: 0, end: 6, text: "[línea autorizada 1]" },
-      { start: 6, end: 12, text: "[línea autorizada 2]" },
+      { start: 0, end: 1, text: "And all the roads" },
+      { start: 1, end: 5, text: "We have to walk are winding" },
+      { start: 5, end: 6, text: "And all the lights" },
+      { start: 6, end: 11, text: "That lead us there are blinding" },
+      { start: 11, end: 13, text: "There are many things that I'd" },
+      { start: 13, end: 15, text: "Like to say to you" },
+      { start: 15, end: 21, text: "But I don't know how" },
+      { start: 21, end: 25, text: "Because maybe" },
+      { start: 25, end: 29, text: "You're gonna be the one that saves me" },
+      { start: 29, end: 36, text: "And after all" },
+      { start: 36, end: 44, text: "You're my wonderwall" },
+      
     ],
   },
   {
@@ -78,10 +105,16 @@ const songs = [
     file: "audio/06-olimpo.mp3",
     cover: "images/cover-olimpo.jpg",
     start: 0,
-    end: 30,
+    end: 23,
     lyrics: [
-      { start: 0, end: 6, text: "[línea autorizada 1]" },
-      { start: 6, end: 12, text: "[línea autorizada 2]" },
+      { start: 0, end: 2, text: "No entiendo por qué reprimís tus sentimientos" },
+      { start: 2, end: 5, text: "Con la excusa de salir en busca de autoconocerte" },
+      { start: 5, end: 7, text: "Sé bien de nuestras diferencias" },
+      { start: 7, end: 11, text: "Pero no olvides que nos enamoramos porque somos diferente`" },
+      { start: 11, end: 15, text: "Sigo siendo el mismo que te enamoró" },
+      { start: 15, end: 16, text: "Pero sin ser dueño" },
+      { start: 16, end: 21, text: "Del Olimpo en el que estábamo' los do'" },
+      { start: 21, end: 23, text: "Solo fuiste un sueño" },
     ],
   },
   {
@@ -90,10 +123,16 @@ const songs = [
     file: "audio/07-lugar-seguro.mp3",
     cover: "images/nosotros-4.jpg",
     start: 0,
-    end: 40,
+    end: 22,
     lyrics: [
-      { start: 0, end: 6, text: "[línea autorizada 1]" },
-      { start: 6, end: 12, text: "[línea autorizada 2]" },
+      { start: 0, end: 2, text: "Seis meses y parecen más" },
+      { start: 2, end: 5, text: "Vas pa' tu casa y ya te echo de menos" },
+      { start: 5, end: 8, text: "Los girasoles no tenían sentido" },
+      { start: 8, end: 11, text: "Pero ya lo tienen desde que nos vemos" },
+      { start: 11, end: 12, text: "Y a nadie le queda un mapa" },
+      { start: 12, end: 16, text: "Del lunar que sabes que me pone mal" },
+      { start: 16, end: 18, text: "Dijiste que arreglé tus daños" },
+      { start: 18, end: 22, text: "Y tú, sin darte cuenta, me curaste igual" },
     ],
   },
 ];
@@ -494,6 +533,38 @@ function debounce(fn, ms) {
 }
 
 /* ============================================================
+   Bloquear desplazamiento manual sin bloquear la navegación interna
+   ============================================================ */
+function initManualScrollLock() {
+  const scrollKeys = new Set([
+    "ArrowUp",
+    "ArrowDown",
+    "PageUp",
+    "PageDown",
+    "Home",
+    "End",
+    " ",
+  ]);
+
+  function canScrollInsideSection(target) {
+    const section = target.closest?.(".section");
+    return section && section.scrollHeight > section.clientHeight;
+  }
+
+  window.addEventListener("wheel", (event) => {
+    if (!canScrollInsideSection(event.target)) event.preventDefault();
+  }, { passive: false });
+  window.addEventListener("touchmove", (event) => {
+    if (!canScrollInsideSection(event.target)) event.preventDefault();
+  }, { passive: false });
+  window.addEventListener("keydown", (event) => {
+    if (scrollKeys.has(event.key) && !canScrollInsideSection(event.target)) {
+      event.preventDefault();
+    }
+  });
+}
+
+/* ============================================================
    Contador de tiempo juntos
    ============================================================ */
 function initCounter() {
@@ -634,4 +705,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initFinalFlow();
   initSongAutoplay();
   initPageNav();
+  initManualScrollLock();
 });
