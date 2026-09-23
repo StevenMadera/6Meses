@@ -255,7 +255,7 @@ function buildPlayer(container, songIndex) {
       <button class="player-play" data-play aria-label="Reproducir">▶</button>
       <span class="player-controls-spacer" aria-hidden="true"></span>
     </div>
-    <p class="player-note" data-note>Fragmento de ${Math.max(0, song.end - song.start)}s</p>
+    <p class="player-note" data-note>Toca play para escuchar este fragmento de ${Math.max(0, song.end - song.start)}s.</p>
   `;
 
   const audio = new Audio();
@@ -515,9 +515,9 @@ function initPlayers() {
 }
 
 /* ============================================================
-   Auto-reproducción al entrar a la página de cada canción
-   ============================================================ */
-function initSongAutoplay() {
+  Detener la canción al salir de su página
+  ============================================================ */
+function initSongAutoStop() {
   const songSections = document.querySelectorAll("[data-song-index]");
   if (!songSections.length || !("IntersectionObserver" in window)) return;
 
@@ -528,10 +528,8 @@ function initSongAutoplay() {
         if (!holder || !holder._audio) return;
 
         if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
-          // Cada vez que se entra a la página de esta canción, empieza a sonar sola.
-          if (holder._audio.paused) {
-            holder._start();
-          } else {
+          // La reproducción queda en manos del usuario; solo se sincroniza si ya estaba sonando.
+          if (!holder._audio.paused) {
             AudioSystem.play(holder._songIndex, holder._audio);
             holder._sync();
           }
@@ -778,7 +776,6 @@ function initCoverOpen() {
 
   btn.addEventListener("click", () => {
     experience.hidden = false;
-    unlockAllAudio();
     document.getElementById("instagram").scrollIntoView({ behavior: "smooth" });
   });
 }
@@ -825,7 +822,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFloatingHearts();
   initCoverOpen();
   initFinalFlow();
-  initSongAutoplay();
+  initSongAutoStop();
   initAudioResumeSync();
   initPageNav();
   initManualScrollLock();
