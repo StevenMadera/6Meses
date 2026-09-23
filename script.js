@@ -271,6 +271,7 @@ function buildPlayer(container, songIndex) {
   const volumeInput = container.querySelector("[data-volume]");
   const lyricsEl = container.querySelector("[data-lyrics]");
   let visualFrame = null;
+  let visualStartedAt = null;
 
   // Construir líneas de letra
   song.lyrics.forEach((line, i) => {
@@ -292,18 +293,49 @@ function buildPlayer(container, songIndex) {
 
   function updateLyrics(fragTime) {
     const lines = lyricsEl.querySelectorAll(".lyrics-line");
+    let currentIndex = song.lyrics.findIndex((line) => fragTime >= line.start && fragTime < line.end);
+
+    if (currentIndex === -1) {
+      for (let i = song.lyrics.length - 1; i >= 0; i--) {
+        if (fragTime >= song.lyrics[i].start) {
+          currentIndex = i;
+          break;
+        }
+      }
+    }
+
+    if (currentIndex === -1) currentIndex = 0;
+
     lines.forEach((el, i) => {
-      const line = song.lyrics[i];
-      const active = fragTime >= line.start && fragTime < line.end;
-      el.classList.toggle("is-current", active);
+      el.classList.toggle("is-current", i === currentIndex);
     });
   }
 
-  function updateUI() {
-    const fragTime = Math.min(
-      Math.max(0, audio.currentTime - song.start),
+  function getAudioFragmentTime() {
+    const audioTime = Number.isFinite(audio.currentTime) ? audio.currentTime : song.start;
+    return Math.min(
+      Math.max(0, audioTime - song.start),
       fragmentDuration
     );
+  }
+
+  function getVisualFragmentTime() {
+    if (!audio.paused && visualStartedAt !== null) {
+      return Math.min(
+        Math.max(0, (performance.now() - visualStartedAt) / 1000),
+        fragmentDuration
+      );
+    }
+
+    return getAudioFragmentTime();
+  }
+
+  function syncVisualClock() {
+    visualStartedAt = performance.now() - getAudioFragmentTime() * 1000;
+  }
+
+  function updateUI() {
+    const fragTime = getVisualFragmentTime();
     const pct = (fragTime / fragmentDuration) * 100;
     fill.style.width = pct + "%";
     currentEl.textContent = formatTime(fragTime);
@@ -320,14 +352,16 @@ function buildPlayer(container, songIndex) {
 
   function startVisualTicker() {
     if (visualFrame) return;
+    if (visualStartedAt === null) syncVisualClock();
 
     const tick = () => {
       updateUI();
 
-      if (audio.currentTime >= song.end) {
+      if (getVisualFragmentTime() >= fragmentDuration) {
         stopVisualTicker();
         AudioSystem.fadeOutAndStop(audio, () => {
           audio.currentTime = song.start;
+          visualStartedAt = null;
           playBtn.textContent = "▶";
           updateUI();
         });
@@ -345,6 +379,7 @@ function buildPlayer(container, songIndex) {
   }
 
   function syncPlaybackUI() {
+    if (!audio.paused) syncVisualClock();
     playBtn.textContent = audio.paused ? "▶" : "❚❚";
     updateUI();
     if (!audio.paused) startVisualTicker();
@@ -352,6 +387,7 @@ function buildPlayer(container, songIndex) {
 
   function resetToFragmentStart() {
     audio.currentTime = song.start;
+    visualStartedAt = audio.paused ? null : performance.now();
     updateUI();
   }
 
@@ -380,6 +416,7 @@ function buildPlayer(container, songIndex) {
   });
   audio.addEventListener("pause", () => {
     stopVisualTicker();
+    visualStartedAt = null;
     playBtn.textContent = "▶";
     updateMiniPlayer(song, false);
     updateUI();
@@ -388,6 +425,7 @@ function buildPlayer(container, songIndex) {
   audio.addEventListener("seeked", updateUI);
   audio.addEventListener("ended", () => {
     stopVisualTicker();
+    visualStartedAt = null;
     playBtn.textContent = "▶";
     resetToFragmentStart();
   });
@@ -423,6 +461,7 @@ function buildPlayer(container, songIndex) {
     const rect = bar.getBoundingClientRect();
     const pct = (e.clientX - rect.left) / rect.width;
     audio.currentTime = song.start + pct * fragmentDuration;
+    if (!audio.paused) syncVisualClock();
     updateUI();
   });
 
