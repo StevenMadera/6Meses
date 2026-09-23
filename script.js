@@ -328,6 +328,7 @@ function buildPlayer(container, songIndex) {
   });
   audio.addEventListener("pause", () => {
     playBtn.textContent = "▶";
+    updateMiniPlayer(song, false);
   });
   audio.addEventListener("ended", () => {
     playBtn.textContent = "▶";
@@ -389,7 +390,8 @@ function updateMiniPlayer(song, isPlaying) {
   title.textContent = song.title;
   artist.textContent = song.artist;
   btn.textContent = isPlaying ? "❚❚" : "▶";
-  mini.classList.add("is-active");
+  mini.classList.toggle("is-active", isPlaying);
+  mini.setAttribute("aria-hidden", String(!isPlaying));
 }
 
 document.getElementById("miniPlayerBtn")?.addEventListener("click", () => {
