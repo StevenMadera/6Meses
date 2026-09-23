@@ -1,0 +1,29 @@
+Coloca aqui tus fotos con estos nombres EXACTOS para que aparezcan automaticamente
+(si no colocas alguna, la pagina muestra un bonito marcador en su lugar):
+
+portada.jpg              -> foto de fondo de la portada
+instagram-chat.jpg        -> captura de tus primeros mensajes
+primera-foto.jpg
+primeros-dias.jpg
+picnic-1.jpg  picnic-2.jpg  picnic-3.jpg
+picnic-video-poster.jpg   -> imagen de portada del video del picnic
+paula-1.jpg
+nosotros-1.jpg  nosotros-2.jpg  nosotros-3.jpg  nosotros-4.jpg  nosotros-5.jpg
+ojos-paula.jpg
+salitre-1.jpg  salitre-2.jpg  salitre-3.jpg  salitre-poster.jpg
+collage-1.jpg  collage-2.jpg  collage-3.jpg  collage-4.jpg
+momento-1.jpg ... momento-6.jpg
+video-final-poster.jpg
+pregunta-final.jpg
+
+Portadas de las canciones (estilo Spotify, se muestran como el "album art"
+de cada reproductor):
+cover-sintx.jpg      -> portada de "Sin Tx"
+cover-ebrio.jpg      -> portada de "Ebrio de Amor"
+cover-olimpo.jpg     -> portada de "OLIMPO"
+(Las otras canciones ya reutilizan paula-1.jpg, ojos-paula.jpg,
+nosotros-2.jpg y nosotros-4.jpg como portada — puedes cambiarlas por
+otras editando el campo "cover" de cada canción en script.js)
+
+Formato recomendado: JPG o PNG, no muy pesadas (ideal menos de 1.5MB cada una)
+para que la pagina cargue rapido en el celular.

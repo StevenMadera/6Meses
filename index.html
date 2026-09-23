@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Para Paula ♡ — 6 meses de nosotros</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💜</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Parisienne&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Corazones y partículas flotantes (globales) -->
+<div class="floating-layer" id="floatingLayer" aria-hidden="true"></div>
+
+<!-- Reproductor persistente flotante -->
+<div class="mini-player" id="miniPlayer" aria-hidden="true">
+  <div class="mini-player-art" id="miniPlayerArt">♪</div>
+  <div class="mini-player-info">
+    <p class="mini-player-title" id="miniPlayerTitle">—</p>
+    <p class="mini-player-artist" id="miniPlayerArtist">—</p>
+  </div>
+  <button class="mini-player-btn" id="miniPlayerBtn" aria-label="Reproducir o pausar">▶</button>
+</div>
+
+<!-- Flechas de navegación entre páginas -->
+<button class="page-nav page-nav--prev" id="navPrev" aria-label="Página anterior" hidden>︿</button>
+<button class="page-nav page-nav--next" id="navNext" aria-label="Página siguiente" hidden>﹀</button>
+
+<main id="main">
+
+  <!-- 01 — PORTADA -->
+  <section class="section section-cover" id="cover">
+    <div class="cover-bg">
+      <img src="images/portada.jpg" alt="Steven y Paula" onerror="this.style.display='none'">
+    </div>
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+      <p class="eyebrow-soft">Para Paula ♡</p>
+      <h1 class="script-text cover-title">6 meses de nosotros</h1>
+      <p class="cover-dates">23.03.2026 — 23.09.2026</p>
+      <p class="cover-phrase">Hay historias que no se cuentan, se viven… y la nuestra es una de ellas.</p>
+      <button class="btn-open" id="btnOpen">Abrir esto cuando estés lista… ♡</button>
+    </div>
+  </section>
+
+  <div class="experience" id="experience" hidden>
+
+    <!-- 02 — INSTAGRAM -->
+    <section class="section section-story" id="instagram">
+      <div class="reveal">
+        <h2 class="script-text">Todo comenzó en Instagram…</h2>
+        <p class="body-text">Un mensaje. Una conversación. Y sin darnos cuenta, cada vez teníamos más ganas de hablar.</p>
+        <p class="body-text">Quién iba a pensar que algo tan pequeño terminaría convirtiéndose en algo tan especial.</p>
+      </div>
+      <div class="polaroid-row reveal">
+        <figure class="polaroid" style="--tilt:-6deg">
+          <div class="photo-frame">
+            <img src="images/instagram-chat.jpg" alt="Primeros mensajes" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-placeholder-text">[CAPTURA DE INSTAGRAM]</div>
+          </div>
+          <figcaption>el inicio de todo</figcaption>
+        </figure>
+        <figure class="polaroid" style="--tilt:4deg">
+          <div class="photo-frame">
+            <img src="images/primera-foto.jpg" alt="Primera foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-placeholder-text">[PRIMERA FOTO]</div>
+          </div>
+          <figcaption>nosotros, apenas empezando</figcaption>
+        </figure>
+        <figure class="polaroid" style="--tilt:-3deg">
+          <div class="photo-frame">
+            <img src="images/primeros-dias.jpg" alt="Primeros días" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-placeholder-text">[FOTO DE LOS PRIMEROS DÍAS]</div>
+          </div>
+          <figcaption>los primeros días</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 03 — EL PICNIC -->
+    <section class="section section-story" id="picnic">
+      <div class="reveal">
+        <h2 class="script-text">Y después llegó aquel día…</h2>
+        <p class="highlight-word">El picnic.</p>
+        <p class="body-text">Quizás ese día parecía uno más, pero para mí comenzó a convertirse en algo especial.</p>
+      </div>
+      <div class="media-block reveal">
+        <div class="photo-frame photo-frame--wide">
+          <img src="images/picnic-1.jpg" alt="El picnic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="photo-placeholder-text">[FOTO DEL PICNIC]</div>
+        </div>
+      </div>
+      <div class="polaroid-row reveal">
+        <figure class="polaroid" style="--tilt:5deg">
+          <div class="photo-frame">
+            <img src="images/picnic-2.jpg" alt="Picnic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-placeholder-text">[FOTO DEL PICNIC 2]</div>
+          </div>
+        </figure>
+        <figure class="polaroid" style="--tilt:-4deg">
+          <div class="photo-frame">
+            <img src="images/picnic-3.jpg" alt="Picnic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-placeholder-text">[FOTO DEL PICNIC 3]</div>
+          </div>
+        </figure>
+      </div>
+      <div class="video-slot reveal">
+        <video controls poster="images/picnic-video-poster.jpg" onerror="this.parentElement.classList.add('media-missing')">
+          <source src="videos/picnic.mp4" type="video/mp4">
+        </video>
+        <p class="media-placeholder-text">[VIDEO DEL PICNIC]</p>
+      </div>
+    </section>
+
+    <!-- 04 — SIN TX -->
+    <section class="section section-song song--light" id="song-sintx" data-song-index="0">
+      <div class="reveal">
+        <p class="eyebrow-soft">Capítulo I</p>
+        <h2 class="script-text">Hay canciones que me recuerdan a cómo empezó todo.</h2>
+        <p class="body-text">Apareciste cuando no estaba buscando esto… y terminé encontrando algo que no quería perder.</p>
+      </div>
+      <div class="player reveal" data-player></div>
+    </section>
+
+    <!-- 05 — HECHA PA' MÍ -->
+    <section class="section section-song song--light" id="song-hechapami" data-song-index="1">
+      <div class="reveal">
+        <p class="eyebrow-soft">Capítulo II</p>
+        <h2 class="script-text">Hecha Pa' Mí</h2>
+        <p class="body-text">De todas las personas que podía conocer, qué bonito que hayas sido tú.</p>
+      </div>
+      <div class="player reveal" data-player></div>
+    </section>
+
+    <!-- 06 — EBRIO DE AMOR -->
+    <section class="section section-song song--dark" id="song-ebrio" data-song-index="2">
+      <div class="reveal">
+        <p class="eyebrow-soft">Capítulo III</p>
+        <h2 class="script-text">Enamorándome</h2>
+        <p class="body-text body-text--sparse">Y sin darme cuenta, me estaba enamorando.</p>
+      </div>
+      <div class="player reveal" data-player></div>
+    </section>
+
+    <!-- 07 — TUS OJOS (con su canción: Te Quiero Amor) -->
+    <section class="section section-eyes" id="tus-ojos" data-song-index="3">
+      <div class="eyes-photo">
+        <img src="images/ojos-paula.jpg" alt="Ojos de Paula" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder-text">[FOTO ESPECIAL DE PAULA — SUS OJOS]</div>
+      </div>
+      <div class="eyes-text reveal">
+        <h2 class="script-text">Tus ojos…</h2>
+        <p class="body-text">Esa mirada particular que tienes, esa mirada que siento que tiene solo conmigo.</p>
+        <p class="highlight-word">En tus ojos, encuentro mi lugar favorito.</p>
+        <div class="player player--compact reveal" data-player></div>
+      </div>
+    </section>
+
+    <!-- 08 — SALITRE MÁGICO -->
+    <section class="section section-story" id="salitre">
+      <div class="reveal">
+        <p class="eyebrow-soft">Nuestro recuerdo favorito</p>
+        <h2 class="script-text">Salitre Mágico 🎢</h2>
+        <p class="body-text">De todos los lugares, de todos los días y de todos los momentos… este es uno de los que guardo con más cariño.</p>
+      </div>
+      <div class="video-slot reveal">
+        <video controls poster="images/salitre-poster.jpg" onerror="this.parentElement.classList.add('media-missing')">
+          <source src="videos/salitre.mp4" type="video/mp4">
+        </video>
+        <p class="media-placeholder-text">[VIDEO DE SALITRE MÁGICO]</p>
+      </div>
+      <div class="mini-gallery reveal">
+        <div class="photo-frame">
+          <img src="images/salitre-1.jpg" alt="Salitre Mágico" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="photo-placeholder-text">[FOTO SALITRE MÁGICO 1]</div>
+        </div>
+        <div class="photo-frame">
+          <img src="images/salitre-2.jpg" alt="Salitre Mágico" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="photo-placeholder-text">[FOTO SALITRE MÁGICO 2]</div>
+        </div>
+        <div class="photo-frame">
+          <img src="images/salitre-3.jpg" alt="Salitre Mágico" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="photo-placeholder-text">[FOTO SALITRE MÁGICO 3]</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 — WONDERWALL -->
+    <section class="section section-song song--cinematic" id="song-wonderwall" data-song-index="4">
+      <div class="reveal">
+        <p class="eyebrow-soft">Capítulo IV</p>
+        <h2 class="script-text">Lo que nunca supe decir</h2>
+        <p class="body-text">Hay cosas que nunca supe cómo decirte… así que dejé que una canción hablara por mí.</p>
+      </div>
+      <div class="player reveal" data-player></div>
+    </section>
+
+    <!-- 10 — SEIS MESES / CONTADOR -->
+    <section class="section section-counter" id="seis-meses">
+      <div class="reveal">
+        <h2 class="script-text counter-title">6 meses de nosotros</h2>
+        <p class="body-text">Seis meses de risas, locuras, planes, abrazos, besos y momentos que siempre voy a atesorar.</p>
+      </div>
+      <div class="counter reveal" id="counter" aria-live="polite">
+        <div class="counter-unit"><span class="counter-number" id="cDays">0</span><span class="counter-label">días</span></div>
+        <div class="counter-unit"><span class="counter-number" id="cHours">0</span><span class="counter-label">horas</span></div>
+        <div class="counter-unit"><span class="counter-number" id="cMinutes">0</span><span class="counter-label">min</span></div>
+        <div class="counter-unit"><span class="counter-number" id="cSeconds">0</span><span class="counter-label">seg</span></div>
+      </div>
+      <p class="highlight-word reveal">Y quiero que sean muchos más.</p>
+      <div class="collage reveal">
+        <div class="photo-frame"><img src="images/collage-1.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="photo-placeholder-text">[FOTO]</div></div>
+        <div class="photo-frame"><img src="images/collage-2.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="photo-placeholder-text">[FOTO]</div></div>
+        <div class="photo-frame"><img src="images/collage-3.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="photo-placeholder-text">[FOTO]</div></div>
+        <div class="photo-frame"><img src="images/collage-4.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="photo-placeholder-text">[FOTO]</div></div>
+      </div>
+    </section>
+
+    <!-- 11 — EL MOMENTO DIFÍCIL -->
+    <section class="section section-song song--deep" id="momento-dificil" data-song-index="5">
+      <div class="reveal">
+        <p class="eyebrow-soft">Incluso ahora…</p>
+        <p class="body-text body-text--intimate">Sé que estamos pasando por un momento diferente. Nos estamos dando un tiempo y, aunque para mí no es fácil, quiero que sepas que sigo valorando cada cosa que hemos vivido.</p>
+        <p class="highlight-word">Porque incluso en los momentos difíciles, lo que siento por ti no desaparece.</p>
+      </div>
+      <div class="player reveal" data-player></div>
+    </section>
+
+    <!-- 12 — LO QUE SIENTO POR TI -->
+    <section class="section section-feelings" id="lo-que-siento">
+      <h2 class="script-text reveal">Paula…</h2>
+      <p class="body-text reveal">Es difícil explicarlo con pocas palabras, pero aquí va mi intento:</p>
+      <ul class="feelings-list">
+        <li class="feelings-line reveal">Me enamoran tus ojos.</li>
+        <li class="feelings-line reveal">Me enamora tu forma de mirarme.</li>
+        <li class="feelings-line reveal">Me enamora tu manera de ser.</li>
+        <li class="feelings-line reveal">Nunca imaginé sentir algo así por alguien.</li>
+        <li class="feelings-line reveal">Y cada día me enamoro más y más.</li>
+      </ul>
+      <p class="te-amo reveal">Te amo. ❤️</p>
+    </section>
+
+    <!-- 13 — CARTA PARA PAULA -->
+    <section class="section section-letter" id="carta">
+      <div class="letter-paper reveal">
+        <p class="letter-greeting">Paula,</p>
+        <p>No sé si existe una forma perfecta de decir todo esto, así que voy a intentarlo tal como lo siento.</p>
+        <p>Te amo. Eres la mujer que siempre quise, aunque nunca supe cómo describirla hasta que te conocí. Nunca imaginé que podía sentir algo así por alguien, y cada día que pasa me enamoro un poco más de ti.</p>
+        <p>Amo tus ojos. Amo esa mirada que siento que tienes solo conmigo, como si en ese instante el resto del mundo no existiera. Amo tus detalles, tu forma de ser, las cosas pequeñas que probablemente ni notas pero que yo guardo con cariño.</p>
+        <p>Quiero que sigas a mi lado. Quiero seguir siendo nosotros, seguir creando recuerdos, seguir riéndonos de cualquier cosa, seguir viviendo la vida juntos. Estos seis meses significan muchísimo para mí, y aunque estamos pasando por un momento difícil, sigo valorando todo lo que hemos vivido.</p>
+        <p>No quiero presionarte ni apurar nada. Solo quiero que sepas cuál es mi deseo: seguir construyendo esto contigo, a tu tiempo, de la forma que necesites.</p>
+        <p class="letter-closing">Porque si me preguntan qué quiero… mi respuesta sigues siendo tú. ♡</p>
+        <p class="letter-signature">— Steven</p>
+      </div>
+    </section>
+
+    <!-- 14 — NUESTROS MOMENTOS -->
+    <section class="section section-album" id="momentos">
+      <h2 class="script-text reveal">Nuestros momentos</h2>
+      <div class="album-grid reveal">
+        <figure class="polaroid album-item album-item--lg" style="--tilt:-4deg"><div class="photo-frame"><img src="images/momento-1.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="photo-placeholder-text">[FOTO]</div></div><figcaption>siempre así, riendo</figcaption></figure>
+        <figure class="polaroid album-item" style="--tilt:6deg"><div class="photo-frame"><img src="images/momento-2.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="photo-placeholder-text">[FOTO]</div></div><figcaption>ese día</figcaption></figure>
+        <figure class="polaroid album-item" style="--tilt:-7deg"><div class="photo-frame"><img src="images/momento-3.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="photo-placeholder-text">[FOTO]</div></div><figcaption>uno de mis favoritos</figcaption></figure>
+        <figure class="polaroid album-item album-item--sm" style="--tilt:3deg"><div class="photo-frame"><img src="images/momento-4.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="photo-placeholder-text">[FOTO]</div></div><figcaption>&nbsp;</figcaption></figure>
+        <figure class="polaroid album-item" style="--tilt:-3deg"><div class="photo-frame"><img src="images/momento-5.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="photo-placeholder-text">[FOTO]</div></div><figcaption>&nbsp;</figcaption></figure>
+        <figure class="polaroid album-item album-item--lg" style="--tilt:5deg"><div class="photo-frame"><img src="images/momento-6.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="photo-placeholder-text">[FOTO]</div></div><figcaption>nunca lo voy a olvidar</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- 15 — VIDEO -->
+    <section class="section section-video-big" id="video-final">
+      <h2 class="script-text reveal">Contigo, todo es mejor.</h2>
+      <p class="body-text reveal">Un pequeño recuerdo más antes de llegar al final.</p>
+      <div class="video-slot video-slot--big reveal">
+        <video controls poster="images/video-final-poster.jpg" onerror="this.parentElement.classList.add('media-missing')">
+          <source src="videos/nosotros.mp4" type="video/mp4">
+        </video>
+        <p class="media-placeholder-text">[VIDEO DE NOSOTROS]</p>
+      </div>
+    </section>
+
+    <!-- 16 — LUGAR SEGURO -->
+    <section class="section section-song song--warm" id="lugar-seguro" data-song-index="6">
+      <div class="reveal">
+        <h2 class="script-text">Mi lugar seguro</h2>
+        <p class="body-text">Después de todo lo que vivimos, si tuviera que explicar qué eres para mí…</p>
+        <p class="highlight-word highlight-word--pause">Eres mi lugar seguro.</p>
+      </div>
+      <div class="player reveal" data-player></div>
+    </section>
+
+    <!-- 17 — PREGUNTA FINAL -->
+    <section class="section section-question" id="pregunta-final">
+      <div class="question-bg">
+        <img src="images/pregunta-final.jpg" alt="" onerror="this.style.display='none'">
+      </div>
+      <div class="question-overlay"></div>
+      <div class="question-content reveal">
+        <p class="script-text question-name">Paula…</p>
+        <p class="question-text">¿Seguimos siendo nosotros?</p>
+        <div class="question-buttons">
+          <button class="btn-answer" data-answer="1">Sí, contigo ❤️</button>
+          <button class="btn-answer" data-answer="2">Claro que sí 🥹</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 18 — RESPUESTA FINAL -->
+    <section class="section section-response" id="respuesta-final" hidden>
+      <div class="response-content reveal">
+        <p class="script-text">Qué bonito…</p>
+        <p class="body-text">Entonces todavía nos quedan muchísimas historias por escribir.</p>
+        <p class="highlight-word">Esto apenas comienza. 💜</p>
+        <button class="btn-open" id="btnSeeEnd">Ver el final ♡</button>
+      </div>
+    </section>
+
+    <!-- 19 — FINAL -->
+    <section class="section section-end" id="final" hidden>
+      <div class="end-content">
+        <p class="end-line reveal" id="endLine1">6 meses…</p>
+        <p class="end-line reveal" id="endLine2">Y aún falta todo lo que nos queda por vivir.</p>
+        <p class="end-names reveal" id="endLine3">Steven ♡ Paula</p>
+        <p class="end-heart reveal" id="endHeart">♡</p>
+      </div>
+    </section>
+
+  </div><!-- /experience -->
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

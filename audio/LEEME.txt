@@ -1,0 +1,15 @@
+Coloca aqui tus fragmentos de audio con estos nombres EXACTOS
+(deben ser fragmentos de 20-45 segundos que tengas derecho a usar,
+no las canciones completas):
+
+01-sin-tx.mp3
+02-hecha-pa-mi.mp3
+03-ebrio-de-amor.mp3
+04-te-quiero-amor.mp3
+05-wonderwall.mp3
+06-olimpo.mp3
+07-lugar-seguro.mp3
+
+Para ajustar el segundo exacto de inicio/fin de cada fragmento y las
+lineas de letra sincronizadas, edita el bloque "songs" al inicio de
+script.js. Ahi encontraras instrucciones detalladas en los comentarios.

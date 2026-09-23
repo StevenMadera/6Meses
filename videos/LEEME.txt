@@ -1,0 +1,8 @@
+Coloca aqui tus videos con estos nombres EXACTOS:
+
+picnic.mp4      -> video del picnic
+salitre.mp4     -> video de Salitre Magico
+nosotros.mp4    -> video grande de la seccion "Contigo, todo es mejor"
+
+Formato recomendado: MP4 (H.264), comprimido para que no pese demasiado
+(ideal menos de 15-20MB por video para que cargue bien en el celular).
