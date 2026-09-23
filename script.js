@@ -260,7 +260,7 @@ function buildPlayer(container, songIndex) {
 
   const audio = new Audio();
   audio.src = song.file;
-  audio.preload = "none";
+  audio.preload = "metadata";
   audio.volume = 0.9;
 
   const playBtn = container.querySelector("[data-play]");
@@ -316,8 +316,11 @@ function buildPlayer(container, songIndex) {
   }
 
   audio.addEventListener("loadedmetadata", () => {
-    resetToFragmentStart();
-  });
+    audio.currentTime = song.start;
+    updateUI();
+});
+   audio.addEventListener("loadeddata", updateUI);
+audio.addEventListener("canplay", updateUI);
 
   audio.addEventListener("timeupdate", () => {
     if (audio.currentTime >= song.end) {
