@@ -270,6 +270,7 @@ function buildPlayer(container, songIndex) {
   const durationEl = container.querySelector("[data-duration]");
   const volumeInput = container.querySelector("[data-volume]");
   const lyricsEl = container.querySelector("[data-lyrics]");
+  let visualFrame = null;
 
   // Construir líneas de letra
   song.lyrics.forEach((line, i) => {
@@ -310,6 +311,45 @@ function buildPlayer(container, songIndex) {
     updateMiniPlayer(song, !audio.paused);
   }
 
+  function stopVisualTicker() {
+    if (visualFrame) {
+      cancelAnimationFrame(visualFrame);
+      visualFrame = null;
+    }
+  }
+
+  function startVisualTicker() {
+    if (visualFrame) return;
+
+    const tick = () => {
+      updateUI();
+
+      if (audio.currentTime >= song.end) {
+        stopVisualTicker();
+        AudioSystem.fadeOutAndStop(audio, () => {
+          audio.currentTime = song.start;
+          playBtn.textContent = "▶";
+          updateUI();
+        });
+        return;
+      }
+
+      if (!audio.paused && !audio.ended) {
+        visualFrame = requestAnimationFrame(tick);
+      } else {
+        visualFrame = null;
+      }
+    };
+
+    visualFrame = requestAnimationFrame(tick);
+  }
+
+  function syncPlaybackUI() {
+    playBtn.textContent = audio.paused ? "▶" : "❚❚";
+    updateUI();
+    if (!audio.paused) startVisualTicker();
+  }
+
   function resetToFragmentStart() {
     audio.currentTime = song.start;
     updateUI();
@@ -321,6 +361,7 @@ function buildPlayer(container, songIndex) {
 
   audio.addEventListener("timeupdate", () => {
     if (audio.currentTime >= song.end) {
+      stopVisualTicker();
       AudioSystem.fadeOutAndStop(audio, () => {
         audio.currentTime = song.start;
         playBtn.textContent = "▶";
@@ -332,10 +373,13 @@ function buildPlayer(container, songIndex) {
   });
 
   audio.addEventListener("play", () => {
-    playBtn.textContent = "❚❚";
-    updateUI();
+    syncPlaybackUI();
+  });
+  audio.addEventListener("playing", () => {
+    syncPlaybackUI();
   });
   audio.addEventListener("pause", () => {
+    stopVisualTicker();
     playBtn.textContent = "▶";
     updateMiniPlayer(song, false);
     updateUI();
@@ -343,6 +387,7 @@ function buildPlayer(container, songIndex) {
   audio.addEventListener("seeking", updateUI);
   audio.addEventListener("seeked", updateUI);
   audio.addEventListener("ended", () => {
+    stopVisualTicker();
     playBtn.textContent = "▶";
     resetToFragmentStart();
   });
@@ -357,6 +402,7 @@ function buildPlayer(container, songIndex) {
     }
     audio.volume = volumeInput.value;
     AudioSystem.play(songIndex, audio);
+    syncPlaybackUI();
   }
 
   playBtn.addEventListener("click", () => {
@@ -370,7 +416,7 @@ function buildPlayer(container, songIndex) {
   // Expuesto para el sistema de auto-reproducción al entrar a esta página
   container._audio = audio;
   container._start = startPlayback;
-  container._sync = updateUI;
+  container._sync = syncPlaybackUI;
   container._songIndex = songIndex;
 
   bar.addEventListener("click", (e) => {
