@@ -460,7 +460,7 @@ img{ max-width:100%; display:block; }
   background: linear-gradient(180deg, rgba(23,10,38,0) 55%, var(--purple-dark) 100%);
 }
 .eyes-photo .photo-placeholder-text{
-  display:flex; background: linear-gradient(135deg,#5a3a7a,#2c1a45); color:var(--lavender);
+  background: linear-gradient(135deg,#5a3a7a,#2c1a45); color:var(--lavender);
 }
 .eyes-text{
   padding:1rem 1.5rem 3rem;
